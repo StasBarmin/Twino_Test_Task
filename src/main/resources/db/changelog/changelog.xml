@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet author="${author}" id="b57e8028-c2dd-45fc-9a15-8aa833d4db9f">
+        <createTable tableName="LOANS" >
+            <column name="personalId" type="NUMBER(18, 0)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="firstName" type="VARCHAR2(100)" />
+            <column name="lastName" type="VARCHAR2(100)" remarks="Краткое наименование клиента"/>
+            <column name="birthDate" type="DATE" remarks="Бренд клиента"/>
+            <column name="employer" type="VARCHAR2(100)" remarks="ИНН"/>
+            <column name="salary" type="NUMBER(10, 2)" remarks="Ревизия"/>
+            <column name="liability" type="NUMBER(10, 2)" remarks="КИО клиента"/>
+            <column name="requestedAmount" type="NUMBER(20, 2)" remarks="КПП клиента"/>
+            <column name="requestedTerm" type="NUMBER(10, 0)" remarks="ОГРН/ОГРНИП клиента"/>
+            <column name="status" type="varchar(64)" remarks="Идентификатор статуса клиента"/>
+        </createTable>
+
+        <addPrimaryKey columnNames="personalId" constraintName="PK_LOANS#PERS_ID"
+                       tableName="LOANS"/>
+    </changeSet>
+</databaseChangeLog>
